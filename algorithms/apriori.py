@@ -88,7 +88,7 @@ def apriori(min_sup,min_conf):
 				intersection_count = np.logical_and(intersection_count,array[:,column_index]) 
 
 			#print Ck[items]
-			Ck[items] -= sum(intersection_count)
+			Ck[items] += sum(intersection_count)
 			#print "Sum inter_count: ",sum(intersection_count)	
 			#print Ck[items]	
 		
@@ -99,30 +99,42 @@ def apriori(min_sup,min_conf):
 		#print len(L_k)
 		#print L_k[1]	
 		k += 1	
+		print k+1, "th item set complete", datetime.now().time()
 	#print k	
+	total_length = 0
 	for i in range(len(L_k)):
 		print i
 		print L_k[i]
+		print "Number of", i+1, "-item set is", len(L_k[i])
+		total_length += len(L_k[i])
 	#print L_k[k-2]
 	#print L_k[1]
-	Columns_of_dataset = [0] * 6
-	for items in L_k[0].keys():
-		index,item = items.split('_')
-		Columns_of_dataset[index].append(item)
+	# Columns_of_dataset = [0] * 6
+	# for items in L_k[0].keys():
+	# 	index,item = items.split('_')
+	# 	Columns_of_dataset[int(index)].append(item)
 	rules =[]
 	for items in L_k[0].keys():
-		for i in range(1,len(L_k)):
+		for i in range(0,len(L_k)-1):
 			for itemsets in L_k[i].keys():
 				#key_itemset = itemsets.keys()
 				if L_k[i+1].get((itemsets + "&&" + items),0) != 0:
 					numer = L_k[i+1][(itemsets + "&&" + items)]
+					print "Hey 1"
 				elif L_k[i+1].get((items + "&&" + itemsets),0) != 0:
 					numer = L_k[i+1][(items + "&&" + itemsets)]
+					print "Hey 2"
 				else:
 					numer = 0
-				confidence = numer/(L_k[i+1])
+				if numer:
+					confidence = float(numer)/(L_k[i][itemsets])
+				else:
+					confidence = 0
+				print confidence
 				if confidence >= min_conf:
-					rules.append([(L_k[i+1], items),confidence])
+					rules.append([(itemsets, items),confidence])
+	for rule in rules:
+		print rule
 
 	print "Complete", datetime.now().time(), "Total number of k item sets", total_length
 
