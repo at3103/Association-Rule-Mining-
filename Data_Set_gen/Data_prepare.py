@@ -20,7 +20,7 @@ label_end   = number_of_features
 array = dataset.values
 
 #Validation Size
-test_size = 0.1
+test_size = 0.01
 
 #Separating the features and the labels
 X = array [:,0:(number_of_features-1)]
