@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 import itertools
+from datetime import datetime
 
 def apriori_gen(L_k,k):
 	Ck = {}
@@ -17,6 +18,9 @@ def apriori_gen(L_k,k):
 				c_temp = list(set(temp+temp1))	
 				common_key = '&&'.join(c_temp)
 				Ck[common_key] = 0#L_k[keys[i]] + L_k[keys[j]] #Union (to subtract intersection)
+	print k, "-item set Apriori C_k generation complete", datetime.now().time()
+	print "Size of", k ,"-item set before pruning", len(Ck)
+
 	# for item1 in L_k.keys():						 	
 	# 		for ele in temp:
 	# 			if ele in keys[j]:
@@ -37,7 +41,8 @@ def apriori_gen(L_k,k):
 			if L_k.get(subset_key,0) == 0:
 				del Ck[items]
 				break
-
+	print k, "-item set Apriori pruning complete", datetime.now().time()
+	print "Size of", k ,"-item set after pruning", len(Ck)
 		# for x in items.split("&&"):
 
 		# 	if L_k.get(x,0) == 0:
@@ -51,11 +56,11 @@ def apriori(min_sup,min_conf):
 	#min_sup = 0.01 
 	#min_conf = 0.3 
 
-	source = 'Data_Set_gen/vectorized_data_set'
 
+
+	source = 'Data_Set_gen/vectorized_data_set'
 	#Load dataset
 	dataset = pd.DataFrame.from_csv(source + '.csv')
-
 	#Extracting the values from the dataframe
 	array = dataset.values
 	min_sup_count = int(min_sup*len(array))
@@ -100,10 +105,25 @@ def apriori(min_sup,min_conf):
 		print L_k[i]
 	#print L_k[k-2]
 	#print L_k[1]
+	Columns_of_dataset = [0] * 6
+	for items in L_k[0].keys():
+		index,item = items.split('_')
+		Columns_of_dataset[index].append(item)
+	rules =[]
+	for items in L_k[0].keys():
+		for i in range(1,len(L_k)):
+			for itemsets in L_k[i].keys():
+				#key_itemset = itemsets.keys()
+				if L_k[i+1].get((itemsets + "&&" + items),0) != 0:
+					numer = L_k[i+1][(itemsets + "&&" + items)]
+				elif L_k[i+1].get((items + "&&" + itemsets),0) != 0:
+					numer = L_k[i+1][(items + "&&" + itemsets)]
+				else:
+					numer = 0
+				confidence = numer/(L_k[i+1])
+				if confidence >= min_conf:
+					rules.append([(L_k[i+1], items),confidence])
 
-					
+	print "Complete", datetime.now().time(), "Total number of k item sets", total_length
 
-
-
-	#dataset.columns.get_loc('1_Monday')
 
