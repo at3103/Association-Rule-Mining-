@@ -21,21 +21,11 @@ def apriori_gen(L_k,k):
 	print k, "-item set Apriori C_k generation complete", datetime.now().time()
 	print "Size of", k ,"-item set before pruning", len(Ck)
 
-	# for item1 in L_k.keys():						 	
-	# 		for ele in temp:
-	# 			if ele in keys[j]:
-	# 				common_key = keys[i]+'&&'+keys[j].strip('&&'+ele)
-	# 				Ck[common_key] = L_k[keys[i]] + L_k[keys[j]] #Union (to subtract intersection)
-	# # for item1 in L_k.keys():
-	# 	for item2 in set(L_k.keys())-{item1}:
-	# 		Ck[item1+"&&"+item2] = L_k[item1] + L_k[item2]
 
 	# PRUNE STEP
 	for items in Ck.keys():
 		key = items.split("&&") # List with items 
 		subsets = list(set(itertools.combinations(key,k))) # Generating subset of key list
-		#print "Subsets!"
-		#print subsets
 		for ele in subsets:
 			subset_key = '&&'.join(ele)
 			if L_k.get(subset_key,0) == 0:
@@ -43,42 +33,32 @@ def apriori_gen(L_k,k):
 				break
 	print k, "-item set Apriori pruning complete", datetime.now().time()
 	print "Size of", k ,"-item set after pruning", len(Ck)
-		# for x in items.split("&&"):
-
-		# 	if L_k.get(x,0) == 0:
-		# 		#print "Here"
-		# 		del Ck[items]
-		# 		break
 	return Ck	
 
 
 def apriori(min_sup,min_conf):
-	#min_sup = 0.01 
-	#min_conf = 0.3 
-
-
 
 	source = 'Data_Set_gen/vectorized_data_set'
+	L_k = []
+	Li = {}
+
 	#Load dataset
 	dataset = pd.DataFrame.from_csv(source + '.csv')
+
 	#Extracting the values from the dataframe
 	array = dataset.values
 	min_sup_count = int(min_sup*len(array))
-	print min_sup_count
-	L_k = []
-	Li = {}
+	print "Minimum support is ",min_sup, " which is ", min_sup_count
 	for i in range(1,len(dataset.columns)):
 		if sum(array[:,i]) >= min_sup_count:
 			Li[dataset.columns[i]] = sum(array[:,i])
 	L_k.append(Li)
 
-	#print L_k
 	k=1
 	while len(L_k[k-1])>0:
 		Li = {}
 		Ck = apriori_gen(L_k[k-1],k)
-		#Subtracting intersection
-		#L_temp = {}
+
 		for items in Ck.keys():
 			intersection_count=np.ones(len(array))
 
@@ -86,33 +66,27 @@ def apriori(min_sup,min_conf):
 				#if x in dataset.columns:
 				column_index = dataset.columns.get_loc(x)
 				intersection_count = np.logical_and(intersection_count,array[:,column_index]) 
-
-			#print Ck[items]
 			Ck[items] += sum(intersection_count)
-			#print "Sum inter_count: ",sum(intersection_count)	
-			#print Ck[items]	
+	
 		
 			if Ck[items] < min_sup_count:
 				del Ck[items]	
-				#L_temp[items] = Ck[items]
 		L_k.append(Ck)
-		#print len(L_k)
-		#print L_k[1]	
 		k += 1	
 		print k+1, "th item set complete", datetime.now().time()
-	#print k	
+
 	total_length = 0
 	for i in range(len(L_k)):
 		print i
 		print L_k[i]
 		print "Number of", i+1, "-item set is", len(L_k[i])
 		total_length += len(L_k[i])
-	#print L_k[k-2]
-	#print L_k[1]
+
 	# Columns_of_dataset = [0] * 6
 	# for items in L_k[0].keys():
 	# 	index,item = items.split('_')
 	# 	Columns_of_dataset[int(index)].append(item)
+
 	rules =[]
 	for items in L_k[0].keys():
 		for i in range(0,len(L_k)-1):
@@ -120,21 +94,18 @@ def apriori(min_sup,min_conf):
 				#key_itemset = itemsets.keys()
 				if L_k[i+1].get((itemsets + "&&" + items),0) != 0:
 					numer = L_k[i+1][(itemsets + "&&" + items)]
-					print "Hey 1"
 				elif L_k[i+1].get((items + "&&" + itemsets),0) != 0:
 					numer = L_k[i+1][(items + "&&" + itemsets)]
-					print "Hey 2"
 				else:
 					numer = 0
 				if numer:
 					confidence = float(numer)/(L_k[i][itemsets])
 				else:
 					confidence = 0
-				print confidence
 				if confidence >= min_conf:
 					rules.append([(itemsets, items),confidence])
 	for rule in rules:
-		print rule
+		print rule[0][0] + " ----->  " + rule[0][1] + " with confidence : ", rule[1]
 
 	print "Complete", datetime.now().time(), "Total number of k item sets", total_length
 
