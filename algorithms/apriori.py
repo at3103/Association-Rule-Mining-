@@ -11,12 +11,12 @@ def apriori_gen(L_k,k):
 			temp = keys[i].split("&&")
 			temp1 = keys[j].split("&&")			
 			for ele in temp:
-				if ele in keys[j]:
+				if ele in temp1:
 					c += 1	
 			if c == k-1:
 				c_temp = list(set(temp+temp1))	
 				common_key = '&&'.join(c_temp)
-				Ck[common_key] = L_k[keys[i]] + L_k[keys[j]] #Union (to subtract intersection)
+				Ck[common_key] = 0#L_k[keys[i]] + L_k[keys[j]] #Union (to subtract intersection)
 	# for item1 in L_k.keys():						 	
 	# 		for ele in temp:
 	# 			if ele in keys[j]:
@@ -27,7 +27,6 @@ def apriori_gen(L_k,k):
 	# 		Ck[item1+"&&"+item2] = L_k[item1] + L_k[item2]
 
 	# PRUNE STEP
-	#print Ck.keys()
 	for items in Ck.keys():
 		key = items.split("&&") # List with items 
 		subsets = list(set(itertools.combinations(key,k))) # Generating subset of key list
@@ -48,57 +47,63 @@ def apriori_gen(L_k,k):
 	return Ck	
 
 
+def apriori(min_sup,min_conf):
+	#min_sup = 0.01 
+	#min_conf = 0.3 
 
-min_sup = 0.01
-min_conf = 0.3
+	source = 'Data_Set_gen/vectorized_data_set'
 
-source = '../Data_Set_gen/vectorized_data_set'
+	#Load dataset
+	dataset = pd.DataFrame.from_csv(source + '.csv')
 
-#Load dataset
-dataset = pd.DataFrame.from_csv(source + '.csv')
-
-#Extracting the values from the dataframe
-array = dataset.values
-min_sup_count = int(min_sup*len(array))
-print min_sup_count
-L_k = []
-Li = {}
-for i in range(1,len(dataset.columns)):
-	if sum(array[:,i]) >= min_sup_count:
-		Li[dataset.columns[i]] = sum(array[:,i])
-L_k.append(Li)
-
-#print L_k
-k=1
-while len(L_k[k-1])>0:
+	#Extracting the values from the dataframe
+	array = dataset.values
+	min_sup_count = int(min_sup*len(array))
+	print min_sup_count
+	L_k = []
 	Li = {}
-	Ck = apriori_gen(L_k[k-1],k)
-	#Subtracting intersection
-	intersection_count=np.ones(len(array))
-	#L_temp = {}
-	for items in Ck.keys():
-		for x in items.split("&&"):
-			#if x in dataset.columns:
-			column_index = dataset.columns.get_loc(x)
-			intersection_count = np.logical_and(intersection_count,array[:,column_index]) 
-		Ck[items] -= sum(intersection_count)		
-		if Ck[items] < min_sup_count:
-			del Ck[items]	
-			#L_temp[items] = Ck[items]
-	L_k.append(Ck)
-	#print len(L_k)
-	#print L_k[1]	
-	k += 1	
-#print k	
-for i in range(len(L_k)):
-	print i
-	print L_k[i]
-#print L_k[k-2]
-#print L_k[1]
+	for i in range(1,len(dataset.columns)):
+		if sum(array[:,i]) >= min_sup_count:
+			Li[dataset.columns[i]] = sum(array[:,i])
+	L_k.append(Li)
 
-				
+	#print L_k
+	k=1
+	while len(L_k[k-1])>0:
+		Li = {}
+		Ck = apriori_gen(L_k[k-1],k)
+		#Subtracting intersection
+		#L_temp = {}
+		for items in Ck.keys():
+			intersection_count=np.ones(len(array))
+
+			for x in items.split("&&"):
+				#if x in dataset.columns:
+				column_index = dataset.columns.get_loc(x)
+				intersection_count = np.logical_and(intersection_count,array[:,column_index]) 
+
+			#print Ck[items]
+			Ck[items] += sum(intersection_count)
+			#print "Sum inter_count: ",sum(intersection_count)	
+			#print Ck[items]	
+		
+			if Ck[items] < min_sup_count:
+				del Ck[items]	
+				#L_temp[items] = Ck[items]
+		L_k.append(Ck)
+		#print len(L_k)
+		#print L_k[1]	
+		k += 1	
+	#print k	
+	for i in range(len(L_k)):
+		print i
+		print L_k[i]
+	#print L_k[k-2]
+	#print L_k[1]
+
+					
 
 
 
-#dataset.columns.get_loc('1_Monday')
+	#dataset.columns.get_loc('1_Monday')
 
