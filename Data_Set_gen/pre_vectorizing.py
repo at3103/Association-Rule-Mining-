@@ -13,7 +13,10 @@ def pre_vectorize():
 
 	#Extracting the values from the dataframe
 	array = dataset.values
-
+	time_zone = {'A':'Morning',
+				'B':'Noon',
+				'C':'Evening',
+				'D':'Night'}
 	#Convert into zones and months
 	for i in range(0,len(array)):
 		datetime_obj = datetime.strptime(array[i][1], '%m/%d/%y %H:%M')
@@ -21,8 +24,8 @@ def pre_vectorize():
 		t = array[i][2].split()
 		check = int(t[1] == 'PM')
 		hour = int(t[0].split(':')[0])%12
-		zone = (hour + check * 12)/6 + 65 
-		array[i][2] = chr(zone)
+		zone = time_zone[chr((hour + check * 12)/6 + 65)] 
+		array[i][2] = zone
 
 	#Save to csv file
 	df = pd.DataFrame.from_records(array[:][1:])
