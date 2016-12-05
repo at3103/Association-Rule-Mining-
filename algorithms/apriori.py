@@ -83,7 +83,7 @@ def apriori(min_sup,min_conf):
 				intersection_count = np.logical_and(intersection_count,array[:,column_index]) 
 
 			#print Ck[items]
-			Ck[items] += sum(intersection_count)
+			Ck[items] -= sum(intersection_count)
 			#print "Sum inter_count: ",sum(intersection_count)	
 			#print Ck[items]	
 		
