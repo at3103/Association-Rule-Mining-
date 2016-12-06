@@ -18,8 +18,8 @@ def apriori_gen(L_k,k):
 				c_temp = list(set(temp+temp1))	
 				common_key = '&&'.join(c_temp)
 				Ck[common_key] = 0#L_k[keys[i]] + L_k[keys[j]] #Union (to subtract intersection)
-	print k, "-item set Apriori C_k generation complete", datetime.now().time()
-	print "Size of", k ,"-item set before pruning", len(Ck)
+	# print k, "-item set Apriori C_k generation complete", datetime.now().time()
+	# print "Size of", k ,"-item set before pruning", len(Ck)
 
 
 	# PRUNE STEP
@@ -31,12 +31,12 @@ def apriori_gen(L_k,k):
 			if L_k.get(subset_key,0) == 0:
 				del Ck[items]
 				break
-	print k, "-item set Apriori pruning complete", datetime.now().time()
-	print "Size of", k ,"-item set after pruning", len(Ck)
+	# print k, "-item set Apriori pruning complete", datetime.now().time()
+	# print "Size of", k ,"-item set after pruning", len(Ck)
 	return Ck	
 
 
-def apriori(min_sup,min_conf):
+def apriori(min_sup,min_conf,choice):
 
 	source = 'Data_Set_gen/vectorized_data_set'
 	L_k = []
@@ -73,22 +73,39 @@ def apriori(min_sup,min_conf):
 				del Ck[items]	
 		L_k.append(Ck)
 		k += 1	
-		print k+1, "th item set complete", datetime.now().time()
+		#print k+1, "th item set complete", datetime.now().time()
 
-	total_length = 0
-	for i in range(len(L_k)):
-		print i
-		print L_k[i]
-		print "Number of", i+1, "-item set is", len(L_k[i])
-		total_length += len(L_k[i])
+	# total_length = 0
+	# for i in range(len(L_k)):
+	# 	print i
+	# 	print L_k[i]
+	# 	print "Number of", i+1, "-item set is", len(L_k[i])
+	# 	total_length += len(L_k[i])
 
 	# Columns_of_dataset = [0] * 6
 	# for items in L_k[0].keys():
 	# 	index,item = items.split('_')
 	# 	Columns_of_dataset[int(index)].append(item)
 
+	Columns_dict = {'1': 'Day is ',
+					'2': 'Time of the day is ',
+					'3': 'Agency is ',
+					'4': 'The inquiry is ',
+					'5': 'Call resolution is '
+	}
+
 	rules =[]
+
+	required_rhs=[]
 	for items in L_k[0].keys():
+		if '5_' in items:
+			required_rhs.append(items)
+
+	rhs = {'0': L_k[0].keys(),
+		   '1': required_rhs}
+
+
+	for items in rhs[str(choice)]:
 		for i in range(0,len(L_k)-1):
 			for itemsets in L_k[i].keys():
 				#key_itemset = itemsets.keys()
@@ -105,8 +122,18 @@ def apriori(min_sup,min_conf):
 				if confidence >= min_conf:
 					rules.append([(itemsets, items),confidence])
 	for rule in rules:
+		list_rules = rule[0][0].split('&&')
+		for i in range(len(list_rules)):
+			lhs = list_rules[i]
+			index,name = lhs.split('_')
+			list_rules[i] =  Columns_dict[index] + name 
+		tuple_ele_one = str(' and '.join(list_rules))
+		index,name = rule[0][1].split('_')
+		tuple_ele_two = Columns_dict[index] + name 
+		rule[0] = tuple([tuple_ele_one,tuple_ele_two])
 		print rule[0][0] + " ----->  " + rule[0][1] + " with confidence : ", rule[1]
 
-	print "Complete", datetime.now().time(), "Total number of k item sets", total_length
+	print "Complete", datetime.now().time()
+	#, "Total number of k item sets", total_length
 
 
