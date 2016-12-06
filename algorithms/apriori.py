@@ -17,9 +17,9 @@ def apriori_gen(L_k,k):
 			if c == k-1:
 				c_temp = list(set(temp+temp1))	
 				common_key = '&&'.join(c_temp)
-				Ck[common_key] = 0#L_k[keys[i]] + L_k[keys[j]] #Union (to subtract intersection)
-	# print k, "-item set Apriori C_k generation complete", datetime.now().time()
-	# print "Size of", k ,"-item set before pruning", len(Ck)
+				Ck[common_key] = 0
+	# print k+1, "-item set Apriori C_k generation complete", datetime.now().time()
+	# print "Size of", k+1 ,"-item set before pruning", len(Ck)
 
 
 	# PRUNE STEP
@@ -31,13 +31,14 @@ def apriori_gen(L_k,k):
 			if L_k.get(subset_key,0) == 0:
 				del Ck[items]
 				break
-	# print k, "-item set Apriori pruning complete", datetime.now().time()
-	# print "Size of", k ,"-item set after pruning", len(Ck)
+	# print k+1, "-item set Apriori pruning complete", datetime.now().time()
+	# print "Size of", k+1 ,"-item set after pruning", len(Ck)
 	return Ck	
 
 
 def apriori(min_sup,min_conf,choice):
 
+	print "Algorithm Started", datetime.now().time()
 	source = 'Data_Set_gen/vectorized_data_set'
 	L_k = []
 	Li = {}
@@ -134,6 +135,5 @@ def apriori(min_sup,min_conf,choice):
 		print rule[0][0] + " ----->  " + rule[0][1] + " with confidence : ", rule[1]
 
 	print "Complete", datetime.now().time()
-	#, "Total number of k item sets", total_length
 
 
