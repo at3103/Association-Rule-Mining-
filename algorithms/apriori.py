@@ -22,7 +22,6 @@ def apriori_gen(L_k,k):
 				common_key = '&&'.join(c_temp)
 				Ck[common_key] = 0
 
-
 	# PRUNE STEP - This is to check if all possible combinations of the subset of items in Ck is present in the previous large itemset L_k-1, 
    	# Items which do not satisfy this condition are removed from the dictionary.
 	for items in Ck.keys():
@@ -88,12 +87,6 @@ def apriori(min_sup, min_conf, choice, verbose):
 	display(L_k, len(array), min_sup, 0)
 
 	# Rule Generation
-	Columns_dict = {'1': 'Day is ',
-					'2': 'Time of the day is ',
-					'3': 'Agency is ',
-					'4': 'The inquiry is ',
-					'5': 'Call resolution is '
-	}
 
 	rules =[]
 	required_rhs=[]
@@ -118,38 +111,16 @@ def apriori(min_sup, min_conf, choice, verbose):
 					numer = L_k[i+1][(itemsets + "&&" + items)]
 				elif L_k[i+1].get((items + "&&" + itemsets),0) != 0:
 					numer = L_k[i+1][(items + "&&" + itemsets)]
+
 				# Calculation confidence as conf(LHS=>RHS) = sup(LHS U RHS)/sup(LHS)	
 				if numer:
 					confidence = float(numer)/(L_k[i][itemsets])
+
 				# Only retaining those rules whose confidence is greater than minimum confidence	
 				if confidence >= min_conf:
 					rules.append([(itemsets, items),confidence, numer])
 
-	# Call to print High Confidence Rules
-	display(rules, len(array), min_conf, 1)
-
-
 	#Print Verbose
-	if verbose:
-		with open ('verbose_output.txt', 'w') as file:
-			print_string = "\nVerbose Output\n"
-			print_string += "\n==High-confidence association rules==(min_conf = "+ str(min_conf*100) + "%)==\n"
-			print print_string
-			file.write(print_string)
-			for rule in rules:
-				list_rules = rule[0][0].split('&&')
-				for i in range(len(list_rules)):
-					lhs = list_rules[i]
-					index,name = lhs.split('_')
-					list_rules[i] =  Columns_dict[index] + name 
-				tuple_ele_one = str(' and '.join(list_rules))
-				index,name = rule[0][1].split('_')
-				tuple_ele_two = Columns_dict[index] + name 
-				rule[0] = tuple([tuple_ele_one,tuple_ele_two])
-				sup = float(rule[2]*100.0/len(array))
-				print_string = rule[0][0] + " ===>  " + rule[0][1] + " with confidence : " + str(rule[1]) + " and support:" + str(sup) + "\n"
-				print print_string
-				file.write(print_string+"\n")
-
+	display(rules, len(array), min_conf, verbose + 1)
 		
-	print "Algorithm Complete", datetime.now().time()
+	print "\nAlgorithm Complete", datetime.now().time()

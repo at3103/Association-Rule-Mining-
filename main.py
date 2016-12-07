@@ -4,9 +4,6 @@ import os
 from Data_Set_gen.vectorizing import *
 from datetime import datetime
 
-
-#Data_prepare()
-
 # Preliminary Checks
 if len(sys.argv) < 4:
 	print "Please use the format: python main.py <Integrated data set> <minimum support> <minimum confidence> [v] [r]"
@@ -16,9 +13,6 @@ integrated_dataset = str(sys.argv[1])
 if os.path.isfile('Data_Set_gen/' + integrated_dataset) == 0:
 	print "Please specify a valid file (Integrated_Dataset.csv)"
 	exit()
-
-# Data Vectorization
-vectorize(str('Data_Set_gen/' + integrated_dataset))
 
 min_sup = float(sys.argv[2])
 min_conf = float(sys.argv[3])
@@ -30,6 +24,9 @@ if min_sup > 1 or min_sup < 0:
 if min_conf > 1 or min_conf < 0:
 	print "Please specify a valid confidence value between 0 and 1"
 	exit()
+
+# Data Vectorization
+vectorize(str('Data_Set_gen/' + integrated_dataset))
 
 #choice = 0 --> all rules | choice = 1 --> only call resolution on the right hand side
 choice = 0
