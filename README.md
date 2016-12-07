@@ -78,6 +78,7 @@ Example run: python main.py Integrated_data_set.csv 0.01 0.04
 ```
 
 e) Internal Design
+
 1. For ease of use, we started by vectorizing the dataset. The script in Data_Set_gen/vectorizing.py performs
 this operation. We saved the vectorized data as a CSV file, wherein each value in each of the columns were now
 columns in this new CSV file.
@@ -104,7 +105,7 @@ we calculate the confidence of each rule as conf(LHS=>RHS) = sup(LHS U RHS)/sup(
 rules whose confidence is greater than the input minimum confidence. 
 
 8. We then print these rules in decreasing order of confidence along with the frequent itemsets in decreasing
-order of support. We also save this to an output file (output.txt). 
+order of support. We also save this to an output file (output.txt). If the code is run with the verbose flag, a verbose output is generated in verbose_ouput.txt.
 
 
 f) Interesting Results
@@ -151,7 +152,6 @@ were resolved via CSMR_SR. (≈6.4% of 50,000)
 
 ```
 
-
 ```
 python main.py Integrated_data_set.csv 0.01 0.3 
 
@@ -164,10 +164,6 @@ The combined support for both the above rules is around 11% and the overall supp
 Looking at the above 2 rules, and the support for "HPD", we can conclude that most of the inquiries made for this Agency were heat and hot water related. 
 
 ```
-
-
-For 100,000
-python main.py Integrated_data_set.csv 0.03 0.3 v
 
 REFERENCES:
 
