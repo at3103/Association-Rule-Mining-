@@ -51,9 +51,13 @@ Since there is a lot of data on this on the NYC Dataset, it would be difficult t
 
 d) To run :
 ```
-python main.py Integrated_data_set.csv <min_sup> <min_conf>
-where min_sup = Minimum support (value between 0 and 1)
-min_conf = Minimum confidence (value between 0 and 1)
+python main.py <Integrated data set> <minimum support> <minimum confidence> [v] [r]
+where 
+	<Integrated data set> => Integrated_data_set.csv 
+	minimum support => value between 0 and 1
+	minimum confidence => value between 0 and 1
+	[v] => (Optional) To show verbose results
+	[r] => (Optional) To show restricted results {Rules with only Call Resolution on RHS}
 
 Example run: python main.py Integrated_data_set.csv 0.01 0.04
 ```
@@ -78,7 +82,7 @@ e) Internal Design
 
 f) Interesting Results
 ```
-python main.py Integrated_data_set.csv 0.03 0.3 
+python main.py Integrated_data_set.csv 0.01 0.3 
 
 [Monday] => [Evening], Conf: 44.8522118627%, Supp: 8.05027415794%
 [Friday] => [Evening], Conf: 44.7794779478%, Supp: 7.08538061668%
@@ -101,8 +105,34 @@ indicative of it.
 ```
 
 ```
+python main.py Integrated_data_set.csv 0.01 0.3 
+
+
+
+[Noise from Neighbor, NYPD] => [CSMS SR], Conf: 93.4782608696%, Supp: 2.21996724347%
+[Vehicle Blocking Driveway Complaint, NYPD] => [CSMS SR], Conf: 92.8070175439%, Supp: 1.88350067649%
+[Morning, NYPD] => [CSMS SR], Conf: 55.7964970809%, Supp: 1.1909848323%
+[Night, NYPD] => [CSMS SR], Conf: 41.4321339508%, Supp: 2.07042654703%
+[Saturday, NYPD] => [CSMS SR], Conf: 41.0977242303%, Supp: 1.09307128107%
+
+[NYPD] => [CSMS SR], Conf: 36.968766001%, Supp: 6.42668945382%
+
+From the above results, we can infer that CSMS_SR(Call was resolved by submission of a Service Request) is the most preferred resolutiom type for NYPD call inquiries. Between the third and fourth results, we can see that the number of complaints/calls were more than double in the night in comparision to the ones in morning. 
+
+And the last result provides us the requried evidence/aid to obtain the absolute number of calls for NYPD, that were resolved via CSMR_SR. (≈6.4% of 50,000)
+
+
+[Heat or Hot Water Complaint in Entire Residential Building] => [Routed to Web Page], Conf: 95.6483899043%, Supp: 5.86947233497%
+
+[Heat or Hot Water Complaint in Apartment] => [Routed to Web Page], Conf: 91.7853231106%, Supp: 4.47553941465%
+
+
+
+```
 For 100,000
 python main.py Integrated_data_set.csv 0.03 0.3 v
+
+
 
 
 
