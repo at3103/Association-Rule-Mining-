@@ -4,27 +4,25 @@ TEAM 9
 Ashwin Tamilselvan (at3103)
 Niharika Purbey (np2544)
 
-******* TO DO *********
 Document Structure:
 ```
-main.py:
-output.txt:
-example-run.txt:
+main.py: The main driver program. It takes care of user input/interaction, vectorizing the dataset and calling the apriori algorithm to generate association rules.
+
+example-run.txt: Output of an interesting sample run
 
 algorithms - 
-	apriori.py:
+	apriori.py: The main algorithm [1] consisting of large Itemset generation, Candidate Itemset generation and High Confidence Association Rule Generation
 
 Data_Set_gen -
-	Data_prepare.py:
-	pre_vectorzing.py:
-	vectorizing.py:
-	Integrated_data_set.csv:
-	vectorized_data_set.csv:
+	Data_prepare.py: Stratified Sampling of the original dataset
+	pre_vectorzing.py: Converting attributes to different formats
+	vectorizing.py: Vectorizes the dataset
+	Integrated_data_set.csv: Integrated data set file
+	vectorized_data_set.csv: Vectorized data set file
 
 utils - 
-	display.py:
+	display.py: Prints the Frequent Itemset and the High Confidence Association Rules and also saves to an output file (output.txt)	
 ```
-
 
 a) We used the 3-1-1 Call Center Inquiry dataset from the NYC Open Data set to generate the INTEGRATED-DATASET
 file (https://data.cityofnewyork.us/view/tdd6-3ysr)
@@ -51,9 +49,7 @@ designated time-zones i.e "Morning","Noon","Evening" and "Night" where "Morning"
 "Evening":6pm-12am ; "Night":12am-6am. The script to perform this operation can be found in Data_Set_gen
 pre_vectorizing.py     
 
-c) ******* TO DO ********* what makes your choice of INTEGRATED-DATASET file interesting (in other words,
-justify your choice of NYC Open Data data set(s))
-
+c) 
 We were interested in finding out what the call resolutions were for different types of inquiry. Also, we
 wanted to know if there is a specific day of the week or a specific time when people made more inquiries or
 people made more of a particular type of inquiry. 
@@ -108,7 +104,7 @@ we calculate the confidence of each rule as conf(LHS=>RHS) = sup(LHS U RHS)/sup(
 rules whose confidence is greater than the input minimum confidence. 
 
 8. We then print these rules in decreasing order of confidence along with the frequent itemsets in decreasing
-order of support. We also save this to an output file. 
+order of support. We also save this to an output file (output.txt). 
 
 
 f) Interesting Results
@@ -173,8 +169,9 @@ Looking at the above 2 rules, and the support for "HPD", we can conclude that mo
 For 100,000
 python main.py Integrated_data_set.csv 0.03 0.3 v
 
+REFERENCES:
 
-
+[1] Agrawal R, Srikant R,Fast algorithms for mining association rules, 1994, VLDB (Vol. 1215, pp. 487-499).
 
 
 
