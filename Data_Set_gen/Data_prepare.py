@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn import model_selection
 from pre_vectorizing import *
 from vectorizing import *
 

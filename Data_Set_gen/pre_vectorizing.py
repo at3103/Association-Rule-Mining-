@@ -17,6 +17,7 @@ def pre_vectorize():
 				'B':'Noon',
 				'C':'Evening',
 				'D':'Night'}
+
 	#Convert into zones and months
 	for i in range(0,len(array)):
 		datetime_obj = datetime.strptime(array[i][1], '%m/%d/%y %H:%M')

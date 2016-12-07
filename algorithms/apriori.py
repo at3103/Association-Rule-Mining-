@@ -19,27 +19,26 @@ def apriori_gen(L_k,k):
 				c_temp = list(set(temp+temp1))	
 				common_key = '&&'.join(c_temp)
 				Ck[common_key] = 0
-	# print k+1, "-item set Apriori C_k generation complete", datetime.now().time()
-	# print "Size of", k+1 ,"-item set before pruning", len(Ck)
 
 
 	# PRUNE STEP
 	for items in Ck.keys():
-		key = items.split("&&") # List with items 
-		subsets = list(set(itertools.combinations(key,k))) # Generating subset of key list
+		# List with items 
+		key = items.split("&&") 
+
+		 # Generating subset of key list
+		subsets = list(set(itertools.combinations(key,k)))
 		for ele in subsets:
 			subset_key = '&&'.join(ele)
 			if L_k.get(subset_key,0) == 0:
 				del Ck[items]
 				break
-	# print k+1, "-item set Apriori pruning complete", datetime.now().time()
-	# print "Size of", k+1 ,"-item set after pruning", len(Ck)
 	return Ck	
 
 
-def apriori(min_sup,min_conf,choice):
+def apriori(min_sup, min_conf, choice, verbose):
 
-	print "Algorithm Started", datetime.now().time()
+	print "\nAlgorithm Started", datetime.now().time(), "\n"
 	source = 'Data_Set_gen/vectorized_data_set'
 	L_k = []
 	Li = {}
@@ -49,8 +48,11 @@ def apriori(min_sup,min_conf,choice):
 
 	#Extracting the values from the dataframe
 	array = dataset.values
+
 	min_sup_count = int(min_sup*len(array))
 	print "Minimum support is ",min_sup, " which is ", min_sup_count
+	print "Minimum confidence is ",min_conf, " which is ", min_conf * 100.0
+
 	for i in range(1,len(dataset.columns)):
 		if sum(array[:,i]) >= min_sup_count:
 			Li[dataset.columns[i]] = sum(array[:,i])
@@ -65,34 +67,17 @@ def apriori(min_sup,min_conf,choice):
 			intersection_count=np.ones(len(array))
 
 			for x in items.split("&&"):
-				#if x in dataset.columns:
 				column_index = dataset.columns.get_loc(x)
 				intersection_count = np.logical_and(intersection_count,array[:,column_index]) 
 			Ck[items] += sum(intersection_count)
 	
-		
 			if Ck[items] < min_sup_count:
 				del Ck[items]	
 		L_k.append(Ck)
 		k += 1	
-		#print k+1, "th item set complete", datetime.now().time()
-	#Printing Frequent Itemsets	
 
-	total_length = 0
-	for i in range(len(L_k)):
-		# print i
-		# print L_k[i]
-		# print "Number of", i+1, "-item set is", len(L_k[i])
-		total_length += len(L_k[i])
-
-	print "1.Total len: ",total_length	
-	display(L_k)
-	exit()
-
-	# Columns_of_dataset = [0] * 6
-	# for items in L_k[0].keys():
-	# 	index,item = items.split('_')
-	# 	Columns_of_dataset[int(index)].append(item)
+	#Printing Frequent itemsets	
+	display(L_k, len(array), min_sup, 0)
 
 	Columns_dict = {'1': 'Day is ',
 					'2': 'Time of the day is ',
@@ -102,44 +87,56 @@ def apriori(min_sup,min_conf,choice):
 	}
 
 	rules =[]
-
 	required_rhs=[]
-	for items in L_k[0].keys():
-		if '5_' in items:
-			required_rhs.append(items)
+	
+	if choice:
+		for items in L_k[0].keys():
+			if '5_' in items:
+				required_rhs.append(items)
 
 	rhs = {'0': L_k[0].keys(),
 		   '1': required_rhs}
 
-
 	for items in rhs[str(choice)]:
 		for i in range(0,len(L_k)-1):
 			for itemsets in L_k[i].keys():
-				#key_itemset = itemsets.keys()
+				numer = 0
+				confidence = 0
+
 				if L_k[i+1].get((itemsets + "&&" + items),0) != 0:
 					numer = L_k[i+1][(itemsets + "&&" + items)]
 				elif L_k[i+1].get((items + "&&" + itemsets),0) != 0:
 					numer = L_k[i+1][(items + "&&" + itemsets)]
-				else:
-					numer = 0
+
 				if numer:
 					confidence = float(numer)/(L_k[i][itemsets])
-				else:
-					confidence = 0
 				if confidence >= min_conf:
-					rules.append([(itemsets, items),confidence])
-	for rule in rules:
-		list_rules = rule[0][0].split('&&')
-		for i in range(len(list_rules)):
-			lhs = list_rules[i]
-			index,name = lhs.split('_')
-			list_rules[i] =  Columns_dict[index] + name 
-		tuple_ele_one = str(' and '.join(list_rules))
-		index,name = rule[0][1].split('_')
-		tuple_ele_two = Columns_dict[index] + name 
-		rule[0] = tuple([tuple_ele_one,tuple_ele_two])
-		print rule[0][0] + " ----->  " + rule[0][1] + " with confidence : ", rule[1]
+					rules.append([(itemsets, items),confidence, numer])
 
-	print "Complete", datetime.now().time()
+	#Printing High Confidence Rules
+	display(rules, len(array), min_conf, 1)
 
 
+	#Print Verbose
+	if verbose:
+		with open ('verbose_output.txt', 'w') as file:
+			print_string = "\nVerbose Output\n"
+			print_string += "\n==High-confidence association rules==(min_conf = "+ str(min_conf*100) + "%)==\n"
+			print print_string
+			file.write(print_string)
+			for rule in rules:
+				list_rules = rule[0][0].split('&&')
+				for i in range(len(list_rules)):
+					lhs = list_rules[i]
+					index,name = lhs.split('_')
+					list_rules[i] =  Columns_dict[index] + name 
+				tuple_ele_one = str(' and '.join(list_rules))
+				index,name = rule[0][1].split('_')
+				tuple_ele_two = Columns_dict[index] + name 
+				rule[0] = tuple([tuple_ele_one,tuple_ele_two])
+				print_string = rule[0][0] + " ===>  " + rule[0][1] + " with confidence : " + str(rule[1]) + " and support:" + str(rule[2]) + "\n"
+				print print_string
+				file.write(print_string+"\n")
+
+		
+	print "Algorithm Complete", datetime.now().time()
