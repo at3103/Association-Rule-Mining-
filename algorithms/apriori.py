@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import itertools
 from datetime import datetime
+from utils.display import *
 
 def apriori_gen(L_k,k):
 	Ck = {}
@@ -75,13 +76,18 @@ def apriori(min_sup,min_conf,choice):
 		L_k.append(Ck)
 		k += 1	
 		#print k+1, "th item set complete", datetime.now().time()
+	#Printing Frequent Itemsets	
 
-	# total_length = 0
-	# for i in range(len(L_k)):
-	# 	print i
-	# 	print L_k[i]
-	# 	print "Number of", i+1, "-item set is", len(L_k[i])
-	# 	total_length += len(L_k[i])
+	total_length = 0
+	for i in range(len(L_k)):
+		# print i
+		# print L_k[i]
+		# print "Number of", i+1, "-item set is", len(L_k[i])
+		total_length += len(L_k[i])
+
+	print "1.Total len: ",total_length	
+	display(L_k)
+	exit()
 
 	# Columns_of_dataset = [0] * 6
 	# for items in L_k[0].keys():
