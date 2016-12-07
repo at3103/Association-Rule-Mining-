@@ -138,8 +138,6 @@ indicative of it.
 ```
 python main.py Integrated_data_set.csv 0.01 0.3 
 
-
-
 [Noise from Neighbor, NYPD] => [CSMS SR], Conf: 93.4782608696%, Supp: 2.21996724347%
 [Vehicle Blocking Driveway Complaint, NYPD] => [CSMS SR], Conf: 92.8070175439%, Supp: 1.88350067649%
 [Morning, NYPD] => [CSMS SR], Conf: 55.7964970809%, Supp: 1.1909848323%
@@ -155,15 +153,23 @@ the number of complaints/calls were more than double in the night in comparision
 And the last result provides us the requried evidence/aid to obtain the absolute number of calls for NYPD, that
 were resolved via CSMR_SR. (≈6.4% of 50,000)
 
-
-[Heat or Hot Water Complaint in Entire Residential Building] => [Routed to Web Page], Conf: 95.6483899043%,
-Supp: 5.86947233497%
-
-[Heat or Hot Water Complaint in Apartment] => [Routed to Web Page], Conf: 91.7853231106%, Supp: 4.47553941465%
-
+```
 
 
 ```
+python main.py Integrated_data_set.csv 0.01 0.3 
+
+[Heat or Hot Water Complaint in Entire Residential Building] => [HPD], Conf: 100.0%, Supp: 6.24888730639%
+[Heat or Hot Water Complaint in Apartment] => [HPD], Conf: 100.0%, Supp: 5.10948905109%
+
+[HPD], 19.9928787609%
+
+The combined support for both the above rules is around 11% and the overall support for the frequent Itemset "HPD" (Department of Housing Preservation and Development) is 19% (i.e. 19% of 50,000). Hence we can see that out of the 19% inquiries for HPD, 11% were heat and hot water related. 
+Looking at the above 2 rules, and the support for "HPD", we can conclude that most of the inquiries made for this Agency were heat and hot water related. 
+
+```
+
+
 For 100,000
 python main.py Integrated_data_set.csv 0.03 0.3 v
 
@@ -171,6 +177,5 @@ python main.py Integrated_data_set.csv 0.03 0.3 v
 
 
 
-```
-******* TO DO - Discuss interesting results ********
+
 
