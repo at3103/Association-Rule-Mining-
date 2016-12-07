@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pre_vectorizing import *
 from vectorizing import *
+from sklearn import model_selection
 
 def Data_prepare():
 	#Give the name of your target csv file
@@ -20,7 +21,7 @@ def Data_prepare():
 	array = dataset.values
 
 	#Validation Size
-	test_size = 0.01
+	test_size = 0.2
 
 	#Separating the features and the labels
 	X = array [:,0:(number_of_features-1)]
@@ -39,5 +40,5 @@ def Data_prepare():
 	df.to_csv(target + '.csv')
 
 	pre_vectorize()
-	vectorize()
 
+Data_prepare()

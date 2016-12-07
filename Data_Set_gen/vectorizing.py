@@ -1,13 +1,16 @@
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
-def vectorize():
-	#Give the name of your target csv file and source
-	source = 'Integrated_data_set'
-	target = 'vectorized_data_set'
+def vectorize(source):
+
+	print "\nAlgorithm Started", datetime.now().time(), "\n"
+
+	#Give the name of your target csv file
+	target = 'Data_Set_gen/vectorized_data_set'
 
 	#Load dataset
-	dataset = pd.DataFrame.from_csv(source + '.csv')
+	dataset = pd.DataFrame.from_csv(str(source))
 
 	#Extracting the values from the dataframe
 	array = dataset.values
@@ -16,4 +19,5 @@ def vectorize():
 	#Save to csv file
 	gt = pd.get_dummies(df)
 	gt.to_csv(target + '.csv')
-
+	
+	print "\nAlgorithm Started", datetime.now().time(), "\n"

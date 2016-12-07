@@ -134,7 +134,8 @@ def apriori(min_sup, min_conf, choice, verbose):
 				index,name = rule[0][1].split('_')
 				tuple_ele_two = Columns_dict[index] + name 
 				rule[0] = tuple([tuple_ele_one,tuple_ele_two])
-				print_string = rule[0][0] + " ===>  " + rule[0][1] + " with confidence : " + str(rule[1]) + " and support:" + str(rule[2]) + "\n"
+				sup = float(rule[2]*100.0/len(array))
+				print_string = rule[0][0] + " ===>  " + rule[0][1] + " with confidence : " + str(rule[1]) + " and support:" + str(sup) + "\n"
 				print print_string
 				file.write(print_string+"\n")
 
