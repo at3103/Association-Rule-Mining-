@@ -13,14 +13,16 @@ example-run.txt:
 
 algorithms - 
 	apriori.py:
+
 Data_Set_gen -
 	Data_prepare.py:
 	pre_vectorzing.py:
 	vectorizing.py:
-	CSV files - 
-		INTEGRATED-DATASET.csv
+	Integrated_data_set.csv:
+	vectorized_data_set.csv:
+
 utils - 
-	display.py
+	display.py:
 ```
 
 
