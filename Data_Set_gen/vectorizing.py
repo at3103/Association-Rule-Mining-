@@ -2,11 +2,12 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 
+#Function to vectorize the Integrated_data_set.csv and save the vectorized data in vectorized_data_set.csv
 def vectorize(source):
 
 	print "\nVectorizing Data", datetime.now().time(), "\n"
 
-	#Give the name of your target csv file
+	#Name of target csv file
 	target = 'Data_Set_gen/vectorized_data_set'
 
 	#Load dataset

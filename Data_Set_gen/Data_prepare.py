@@ -5,7 +5,7 @@ from vectorizing import *
 from sklearn import model_selection
 
 def Data_prepare():
-	#Give the name of your target csv file
+	#Name of source and target csv file
 	source = 'Top_5_2015'
 	target = 'Data_set_50k_stratify'
 
@@ -27,7 +27,7 @@ def Data_prepare():
 	X = array [:,0:(number_of_features-1)]
 	Y = array[:,label_start:label_end]
 
-	#Set the seed for randomness here
+	#Setting the seed for randomness 
 	seed = 17
 
 	#Obtain the training and test sets

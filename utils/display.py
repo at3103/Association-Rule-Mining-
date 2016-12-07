@@ -1,6 +1,7 @@
 import operator
 import re
 
+# Function to print and save to output file the Frequent Item Set and High-confidence Association Rules
 def display(L_k, length, minimum, flag):
 	
 	header = {0: "\n==Frequent Item Sets==(min_sup="+ str(minimum*100) + "%)==\n" ,
@@ -20,6 +21,7 @@ def display(L_k, length, minimum, flag):
 			itemset = {index:[rules[1],rules[2]]}
 			common_dict.update(itemset)
 
+	# Sorting the frequent Itemsets based on decreasing order of support/Sorting the Rules based on decreasing order of confidence			
 	common_dict = sorted(common_dict.items(), key=operator.itemgetter(1,0), reverse=True)
 	
 	with open ('output.txt', file_mode[flag]) as file:
