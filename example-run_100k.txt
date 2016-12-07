@@ -1,0 +1,211 @@
+
+==Frequent Item Sets==(min_sup=3.0%)==
+[Evening], 43.0748415581%
+[Noon], 32.5927508367%
+[Information Provided], 29.1061382895%
+[Routed to Web Page], 24.8851741081%
+[3-1-1], 24.6208075198%
+[DOF], 22.9856512141%
+[HPD], 19.4189275796%
+[Night], 19.1545609912%
+[Monday], 17.802463861%
+[NYPD], 17.4855800043%
+[Tuesday], 16.3809371217%
+[Thursday], 16.3586840419%
+[Friday], 16.1228013957%
+[DSNY], 15.4890336823%
+[Internal Transfer], 14.5535142064%
+[Wednesday], 14.4609413943%
+[HPD, Routed to Web Page], 13.7969094923%
+[Information Provided, Evening], 13.7951292459%
+[Evening, DOF], 12.2641173538%
+[CSMS SR], 11.7015594958%
+[3-1-1, Evening], 10.8025350709%
+[Information Provided, DOF], 10.6583351136%
+[Evening, Routed to Web Page], 9.90885138503%
+[Information Provided, Noon], 9.72370576088%
+[Saturday], 9.50117496261%
+[Sunday], 9.37299722282%
+[DOF, Noon], 8.45439008759%
+[Routed to Web Page, Noon], 8.41700491348%
+[3-1-1, Internal Transfer], 8.28704692729%
+[3-1-1, Noon], 8.22651855017%
+[Evening, Monday], 7.99330627359%
+[DSNY, Information Provided], 7.85978779463%
+[Evening, HPD], 7.24560279143%
+[Friday, Evening], 7.16905219682%
+[Evening, Internal Transfer], 7.13967813145%
+[Thursday, Evening], 7.11386455885%
+[Tuesday, Evening], 7.0061596525%
+[Alert Information Provided], 7.00437940611%
+[DSNY, Evening], 6.84860784733%
+[Evening, Wednesday], 6.46318450474%
+[CSMS SR, NYPD], 6.43470056256%
+[Routed to Web Page, DOF], 6.31809442427%
+[HPD, Noon], 6.24154382967%
+[Heat or Hot Water Complaint in Entire Residential Building, HPD], 6.12849818415%
+[Heat or Hot Water Complaint in Entire Residential Building], 6.12849818415%
+[IDNYC - Make an Appointment, 3-1-1], 6.02613401695%
+[IDNYC - Make an Appointment], 6.02613401695%
+[IDNYC - Make an Appointment, Internal Transfer], 6.02524389375%
+[IDNYC - Make an Appointment, 3-1-1, Internal Transfer], 6.02524389375%
+[Evening, NYPD], 5.91397849462%
+[Heat or Hot Water Complaint in Entire Residential Building, Routed to Web Page], 5.85434024069%
+[Heat or Hot Water Complaint in Entire Residential Building, HPD, Routed to Web Page], 5.85434024069%
+[Information Provided, Evening, DOF], 5.77155878374%
+[Monday, Noon], 5.74040447198%
+[Tuesday, Noon], 5.72705262408%
+[Friday, Noon], 5.56326995656%
+[Thursday, Noon], 5.4813786228%
+[DSNY, Noon], 5.26863917966%
+[Friday, Information Provided], 5.23570462152%
+[Morning], 5.17784661397%
+[Information Provided, Monday], 5.12977996155%
+[Routed to Web Page, Night], 5.12443922239%
+[Internal Transfer, Noon], 5.10485651214%
+[Wednesday, Noon], 5.07014170761%
+[3-1-1, Monday], 5.05767998291%
+[Night, NYPD], 5.04877875098%
+[Alert Information Provided, 3-1-1], 5.04343801182%
+[Tuesday, Information Provided], 4.87342448195%
+[Heat or Hot Water Complaint in Apartment, HPD], 4.82268745994%
+[Heat or Hot Water Complaint in Apartment], 4.82268745994%
+[Thursday, Information Provided], 4.75058748131%
+[Parking Ticket Lookup - Ticket or Plate Number Known, DOF], 4.59481592252%
+[Parking Ticket Lookup - Ticket or Plate Number Known], 4.59481592252%
+[Tuesday, 3-1-1], 4.59481592252%
+[3-1-1, Night], 4.59392579933%
+[Information Provided, Night], 4.58769493698%
+[HPD, Night], 4.56455173396%
+[Friday, DOF], 4.53517766859%
+[Alert Information Provided], 4.48444064659%
+[3-1-1, Alert Information Provided], 4.48444064659%
+[Alert Information Provided, Alert Information Provided], 4.46752830592%
+[Alert Information Provided, 3-1-1, Alert Information Provided], 4.46752830592%
+[HPD, Routed to Web Page, Noon], 4.45951719718%
+[Heat or Hot Water Complaint in Apartment, Routed to Web Page], 4.43637399416%
+[Heat or Hot Water Complaint in Apartment, HPD, Routed to Web Page], 4.43637399416%
+[Noon, NYPD], 4.40165918963%
+[CSMS SR, Evening], 4.38652709535%
+[Information Provided, 3-1-1], 4.38207647938%
+[Information Provided, Wednesday], 4.35270241401%
+[Hot Transfer 911], 4.2770419426%
+[Hot Transfer 911, NYPD], 4.27615181941%
+[DOF, Monday], 4.22452467421%
+[Routed to Web Page, Monday], 4.20672221035%
+[Thursday, DOF], 4.18891974649%
+[Tuesday, DOF], 4.16844691305%
+[Thursday, Routed to Web Page], 4.1622160507%
+[Friday, Routed to Web Page], 4.13373210852%
+[Thursday, 3-1-1], 4.10257779677%
+[Wednesday, DOF], 4.05095065157%
+[Information Provided, NYPD], 3.98775190486%
+[Information Provided, DOF, Noon], 3.97440005697%
+[Parking Ticket Lookup - Ticket or Plate Number Known, Routed to Web Page, DOF], 3.87292601296%
+[Parking Ticket Lookup - Ticket or Plate Number Known, Routed to Web Page], 3.87292601296%
+[Evening, Saturday], 3.67264829452%
+[Sunday, Evening], 3.65662607705%
+[Service Request Status - General], 3.63170262764%
+[3-1-1, Service Request Status - General], 3.63170262764%
+[Routed to Web Page, Wednesday], 3.61479028698%
+[Tuesday, Routed to Web Page], 3.60232856227%
+[DSNY, Information Provided, Evening], 3.59253720715%
+[Friday, 3-1-1], 3.50263476465%
+[HPD, Routed to Web Page, Night], 3.45990885139%
+[Monday, Night], 3.42608417005%
+[Transfer to City Agency], 3.42519404686%
+[CSMS SR, Noon], 3.39849035106%
+[HPD, Monday], 3.38246813359%
+[3-1-1, Wednesday], 3.29523606067%
+[Thursday, Internal Transfer], 3.29078544471%
+[Thursday, HPD], 3.16260770491%
+[Apartment Maintenance Complaint, HPD], 3.1501459802%
+[Apartment Maintenance Complaint], 3.1501459802%
+[3-1-1, Routed to Web Page], 3.09317809585%
+[Evening, Routed to Web Page, DOF], 3.0486719362%
+[DSNY, Night], 3.03264971872%
+[Friday, HPD], 3.01395713167%
+[Routed to Web Page, Service Request Status - General], 3.00594602293%
+[3-1-1, Routed to Web Page, Service Request Status - General], 3.00594602293%
+
+==High-confidence association rules==(min_conf = 30.0%)==
+[Heat or Hot Water Complaint in Entire Residential Building] => [HPD], Conf: 100.0%, Supp: 6.12849818415%
+[IDNYC - Make an Appointment] => [3-1-1], Conf: 100.0%, Supp: 6.02613401695%
+[Heat or Hot Water Complaint in Apartment] => [HPD], Conf: 100.0%, Supp: 4.82268745994%
+[Parking Ticket Lookup - Ticket or Plate Number Known] => [DOF], Conf: 100.0%, Supp: 4.59481592252%
+[Alert Information Provided] => [3-1-1], Conf: 100.0%, Supp: 4.48444064659%
+[Parking Ticket Lookup - Ticket or Plate Number Known, Routed to Web Page] => [DOF], Conf: 100.0%, Supp: 3.87292601296%
+[Service Request Status - General] => [3-1-1], Conf: 100.0%, Supp: 3.63170262764%
+[Apartment Maintenance Complaint] => [HPD], Conf: 100.0%, Supp: 3.1501459802%
+[Routed to Web Page, Service Request Status - General] => [3-1-1], Conf: 100.0%, Supp: 3.00594602293%
+[IDNYC - Make an Appointment] => [Internal Transfer], Conf: 99.9852289513%, Supp: 6.02524389375%
+[IDNYC - Make an Appointment, 3-1-1] => [Internal Transfer], Conf: 99.9852289513%, Supp: 6.02524389375%
+[Hot Transfer 911] => [NYPD], Conf: 99.9791883455%, Supp: 4.27615181941%
+[Alert Information Provided] => [Alert Information Provided], Conf: 99.6228662168%, Supp: 4.46752830592%
+[3-1-1, Alert Information Provided] => [Alert Information Provided], Conf: 99.6228662168%, Supp: 4.46752830592%
+[3-1-1, Routed to Web Page] => [Service Request Status - General], Conf: 97.1798561151%, Supp: 3.00594602293%
+[Heat or Hot Water Complaint in Entire Residential Building] => [Routed to Web Page], Conf: 95.5265068991%, Supp: 5.85434024069%
+[Heat or Hot Water Complaint in Entire Residential Building, HPD] => [Routed to Web Page], Conf: 95.5265068991%, Supp: 5.85434024069%
+[Heat or Hot Water Complaint in Apartment] => [Routed to Web Page], Conf: 91.9896640827%, Supp: 4.43637399416%
+[Heat or Hot Water Complaint in Apartment, HPD] => [Routed to Web Page], Conf: 91.9896640827%, Supp: 4.43637399416%
+[Alert Information Provided, 3-1-1] => [Alert Information Provided], Conf: 88.5810095305%, Supp: 4.46752830592%
+[Parking Ticket Lookup - Ticket or Plate Number Known] => [Routed to Web Page], Conf: 84.2890352577%, Supp: 3.87292601296%
+[Service Request Status - General] => [Routed to Web Page], Conf: 82.7696078431%, Supp: 3.00594602293%
+[3-1-1, Internal Transfer] => [IDNYC - Make an Appointment], Conf: 72.7067669173%, Supp: 6.02524389375%
+[Alert Information Provided] => [3-1-1], Conf: 72.0040665904%, Supp: 5.04343801182%
+[HPD] => [Routed to Web Page], Conf: 71.0487715438%, Supp: 13.7969094923%
+[Routed to Web Page, Night] => [HPD], Conf: 67.517804412%, Supp: 3.45990885139%
+[Alert Information Provided] => [Alert Information Provided], Conf: 63.7819290888%, Supp: 4.46752830592%
+[Routed to Web Page, DOF] => [Parking Ticket Lookup - Ticket or Plate Number Known], Conf: 61.2989574528%, Supp: 3.87292601296%
+[Internal Transfer] => [3-1-1], Conf: 56.9418960245%, Supp: 8.28704692729%
+[Routed to Web Page] => [HPD], Conf: 55.4422863684%, Supp: 13.7969094923%
+[CSMS SR] => [NYPD], Conf: 54.9901110604%, Supp: 6.43470056256%
+[DOF] => [Evening], Conf: 53.3555357627%, Supp: 12.2641173538%
+[Routed to Web Page, Noon] => [HPD], Conf: 52.9822335025%, Supp: 4.45951719718%
+[DSNY] => [Information Provided], Conf: 50.7442101029%, Supp: 7.85978779463%
+[Internal Transfer] => [Evening], Conf: 49.0581039755%, Supp: 7.13967813145%
+[Routed to Web Page, DOF] => [Evening], Conf: 48.2530290223%, Supp: 3.0486719362%
+[Information Provided] => [Evening], Conf: 47.3959448301%, Supp: 13.7951292459%
+[Evening, DOF] => [Information Provided], Conf: 47.0605312818%, Supp: 5.77155878374%
+[DOF, Noon] => [Information Provided], Conf: 47.0098968204%, Supp: 3.97440005697%
+[DOF] => [Information Provided], Conf: 46.3695155482%, Supp: 10.6583351136%
+[DSNY, Information Provided] => [Evening], Conf: 45.7078142695%, Supp: 3.59253720715%
+[Monday] => [Evening], Conf: 44.9%, Supp: 7.99330627359%
+[Wednesday] => [Evening], Conf: 44.6940785424%, Supp: 6.46318450474%
+[Friday] => [Evening], Conf: 44.4653011649%, Supp: 7.16905219682%
+[DSNY] => [Evening], Conf: 44.2158496638%, Supp: 6.84860784733%
+[3-1-1] => [Evening], Conf: 43.8756326826%, Supp: 10.8025350709%
+[Thursday] => [Evening], Conf: 43.486777669%, Supp: 7.11386455885%
+[Tuesday] => [Evening], Conf: 42.7702005108%, Supp: 7.0061596525%
+[HPD, Routed to Web Page] => [Heat or Hot Water Complaint in Entire Residential Building], Conf: 42.4322580645%, Supp: 5.85434024069%
+[Information Provided, Evening] => [DOF], Conf: 41.8376564718%, Supp: 5.77155878374%
+[Internal Transfer] => [IDNYC - Make an Appointment], Conf: 41.4006116208%, Supp: 6.02524389375%
+[Routed to Web Page] => [Evening], Conf: 39.8182923776%, Supp: 9.90885138503%
+[Sunday] => [Evening], Conf: 39.012345679%, Supp: 3.65662607705%
+[Saturday] => [Evening], Conf: 38.654674911%, Supp: 3.67264829452%
+[CSMS SR] => [Evening], Conf: 37.4866879659%, Supp: 4.38652709535%
+[HPD] => [Evening], Conf: 37.3120645398%, Supp: 7.24560279143%
+[Information Provided, DOF] => [Noon], Conf: 37.2891264406%, Supp: 3.97440005697%
+[NYPD] => [CSMS SR], Conf: 36.8000407249%, Supp: 6.43470056256%
+[DOF] => [Noon], Conf: 36.7811640785%, Supp: 8.45439008759%
+[Information Provided] => [DOF], Conf: 36.6188568458%, Supp: 10.6583351136%
+[Internal Transfer] => [Noon], Conf: 35.0764525994%, Supp: 5.10485651214%
+[Wednesday] => [Noon], Conf: 35.0609380771%, Supp: 5.07014170761%
+[Tuesday] => [Noon], Conf: 34.9616910286%, Supp: 5.72705262408%
+[Friday] => [Noon], Conf: 34.50560371%, Supp: 5.56326995656%
+[DSNY] => [Noon], Conf: 34.0152864778%, Supp: 5.26863917966%
+[Routed to Web Page] => [Noon], Conf: 33.8233716064%, Supp: 8.41700491348%
+[NYPD] => [Evening], Conf: 33.8220321727%, Supp: 5.91397849462%
+[3-1-1] => [Internal Transfer], Conf: 33.6587129429%, Supp: 8.28704692729%
+[Thursday] => [Noon], Conf: 33.5074545652%, Supp: 5.4813786228%
+[3-1-1] => [Noon], Conf: 33.4128705712%, Supp: 8.22651855017%
+[Information Provided] => [Noon], Conf: 33.4077494725%, Supp: 9.72370576088%
+[Friday] => [Information Provided], Conf: 32.4739137636%, Supp: 5.23570462152%
+[HPD, Routed to Web Page] => [Noon], Conf: 32.3225806452%, Supp: 4.45951719718%
+[Monday] => [Noon], Conf: 32.245%, Supp: 5.74040447198%
+[HPD, Routed to Web Page] => [Heat or Hot Water Complaint in Apartment], Conf: 32.1548387097%, Supp: 4.43637399416%
+[HPD] => [Noon], Conf: 32.1415474881%, Supp: 6.24154382967%
+[Evening] => [Information Provided], Conf: 32.0259547033%, Supp: 13.7951292459%
+[HPD] => [Heat or Hot Water Complaint in Entire Residential Building], Conf: 31.5594059406%, Supp: 6.12849818415%
+[Evening, Routed to Web Page] => [DOF], Conf: 30.7671577434%, Supp: 3.0486719362%
+[Wednesday] => [Information Provided], Conf: 30.0997168534%, Supp: 4.35270241401%

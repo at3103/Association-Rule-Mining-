@@ -21,7 +21,7 @@ def Data_prepare():
 	array = dataset.values
 
 	#Validation Size
-	test_size = 0.2
+	test_size = 0.1
 
 	#Separating the features and the labels
 	X = array [:,0:(number_of_features-1)]

@@ -4,7 +4,7 @@ from datetime import datetime
 
 def vectorize(source):
 
-	print "\nAlgorithm Started", datetime.now().time(), "\n"
+	print "\nVectorizing Data", datetime.now().time(), "\n"
 
 	#Give the name of your target csv file
 	target = 'Data_Set_gen/vectorized_data_set'
@@ -19,5 +19,5 @@ def vectorize(source):
 	#Save to csv file
 	gt = pd.get_dummies(df)
 	gt.to_csv(target + '.csv')
-	
-	print "\nAlgorithm Started", datetime.now().time(), "\n"
+
+	print "\nDone with vectorizing", datetime.now().time(), "\n"

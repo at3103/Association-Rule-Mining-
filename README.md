@@ -6,7 +6,7 @@ Niharika Purbey (np2544)
 
 ******* TO DO *********
 Document Structure:
-
+```
 main.py:
 output.txt:
 example-run.txt:
@@ -21,7 +21,7 @@ Data_Set_gen -
 		INTEGRATED-DATASET.csv
 utils - 
 	display.py
-
+```
 
 
 a) We used the 3-1-1 Call Center Inquiry dataset from the NYC Open Data set to generate the INTEGRATED-DATASET file (https://data.cityofnewyork.us/view/tdd6-3ysr)
@@ -45,12 +45,18 @@ It would also be interesting to know if certain call resolutions were linked to 
 
 Since there is a lot of data on this on the NYC Dataset, it would be difficult to visualize interesting patterns by simply viewing it in charts. Hence, we require association rules to find interesting relationships between the different atrributes of the dataset. 
 
+[DOF, Noon] => [Information Provided], Conf: 47.1957671958%, Supp: 3.969949441%
+[Evening, DOF] => [Information Provided], Conf: 47.1355311355%, Supp: 5.72705262408%
+
+
 d) To run :
-python main.py INTEGRATED-DATASET.csv <min_sup> <min_conf>
+```
+python main.py Integrated_data_set.csv <min_sup> <min_conf>
 where min_sup = Minimum support (value between 0 and 1)
 min_conf = Minimum confidence (value between 0 and 1)
 
-Example run: python main.py INTEGRATED-DATASET.csv 0.01 0.04
+Example run: python main.py Integrated_data_set.csv 0.01 0.04
+```
 
 e) Internal Design
 1. For ease of use, we started by vectorizing the dataset. The script in Data_Set_gen/vectorizing.py performs this operation. We saved the vectorized data as a CSV file, wherein each value in each of the columns were now columns in this new CSV file.
@@ -71,6 +77,35 @@ e) Internal Design
 
 
 f) Interesting Results
-python main.py INTEGRATED-DATASET.csv 0.05 0.3 
+```
+python main.py Integrated_data_set.csv 0.03 0.3 
+
+[Monday] => [Evening], Conf: 44.8522118627%, Supp: 8.05027415794%
+[Friday] => [Evening], Conf: 44.7794779478%, Supp: 7.08538061668%
+[Wednesday] => [Evening], Conf: 44.5170840015%, Supp: 6.42490920743%
+[Thursday] => [Evening], Conf: 43.4210526316%, Supp: 7.1085238197%
+[Tuesday] => [Evening], Conf: 43.1402273958%, Supp: 7.09250160222%
+[Saturday] => [Evening], Conf: 39.0065604499%, Supp: 3.70469272947%
+[Sunday] => [Evening], Conf: 38.8628260462%, Supp: 3.68689026561%
+
+
+From the above results, we can infer that the majority of the calls placed were during the evening period(6 PM
+- 12 AM). As the time zones form a mutually exclusive and exhaustive set, we can derive a clean breakup of the
+various time zones of the day. 
+
+The support of the above rules conforms to the hypothesis that the number of queries would be more during the
+weekdays, as not all the agencies would be working over the weekend. Only urgent calls/queries are made
+during the weekend, and the support values of Saturday/Sunday in comparision to the weekends are a good
+indicative of it.
+
+```
+
+```
+For 100,000
+python main.py Integrated_data_set.csv 0.03 0.3 v
+
+
+
+```
 ******* TO DO - Discuss interesting results ********
 
